@@ -1,4 +1,4 @@
-# css Basics
+# CSS Basics
 
 ## Table Of Contents
 
@@ -30,10 +30,7 @@
 26. <a href="#counter">Counter</a>
 27. <a href="#units">Units</a>
 28. <a href="#css-specificity">CSS Specificity</a>
-29. <a href="#height">Opacity</a>
-30. <a href="#height">Opacity</a>
-31. <a href="#height">Opacity</a>
-32. <a href="#height">Opacity</a>
+29. <a href="#math-functions">Math Functions</a>
 
 # Add CSS
 
