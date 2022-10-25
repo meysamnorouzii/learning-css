@@ -31,6 +31,19 @@
 27. <a href="#units">Units</a>
 28. <a href="#css-specificity">CSS Specificity</a>
 29. <a href="#math-functions">Math Functions</a>
+30. <a href="#gradient">Gradient</a>
+31. <a href="#box-shadow">Box Shadow</a>
+32. <a href="#transforms">Transforms</a>
+33. <a href="#Transitions">Transitions</a>
+34. <a href="#animations">Animations</a>
+35. <a href="#object-properties">Object Properties</a>
+36. <a href="#masking">Masking</a>
+37. <a href="#multiple-columns">Multiple Columns</a>
+38. <a href="#user-interface">User Interface</a>
+39. <a href="#variables">Variables</a>
+40. <a href="#box-sizing">Box Sizing</a>
+41. <a href="#media-query">Media Query</a>
+42. <a href="#flex-box">Flex Box</a>
 
 # Add CSS
 
@@ -101,12 +114,13 @@ div {
 ```
 
 <code>
-    background-image: url|none|initial|inherit;
+  background-image: url|none|initial|inherit;
 </code>
 
 ```css
 div {
   background-image: url("paper.gif");
+
   background-image: url(image1.png), url(image2.png), url(image3.png),
     url(image4.png);
   background-image: linear-gradient(to bottom, red, blue), url("catfront.png");
@@ -215,14 +229,15 @@ div {
    background-clip: border-box|padding-box|content-box|initial|inherit;
 </code>
 
-````css
+```css
 div {
- /* Keyword values */
+  /* Keyword values */
   background-clip: border-box;
   background-clip: padding-box;
   background-clip: content-box;
   background-clip: text;
 }
+```
 
 <code>
    background-origin: padding-box|border-box|content-box|initial|inherit;
@@ -230,12 +245,12 @@ div {
 
 ```css
 div {
-   /* Keyword values */
+  /* Keyword values */
   background-origin: border-box;
   background-origin: padding-box;
   background-origin: content-box;
 }
-````
+```
 
 <code>
    background-blend-mode: normal|multiply|screen|overlay|darken|lighten|color-dodge|saturation|color|luminosity;
@@ -367,6 +382,38 @@ border-spacing: length|initial|inherit;
 table {
   border-spacing: 15px;
   border-spacing: 15px 50px;
+}
+```
+
+<code>
+border-image: source slice width outset repeat|initial|inherit;
+</code>
+
+```css
+#borderimg {
+  border-image: url(border.png) 30 round;
+}
+```
+
+<code>
+border-image-source: none|image|initial|inherit;
+
+border-image-slice: number|%|fill|initial|inherit;
+
+border-image-width: number|%|auto|initial|inherit;
+
+border-image-outset: length|number|initial|inherit;
+
+border-image-repeat: stretch|repeat|round|space|initial|inherit;
+</code>
+
+```css
+#borderimg {
+  border-image-source: url(border.png);
+  border-image-slice: 30%;
+  border-image-width: 10px;
+  border-image-outset: 10px;
+  border-image-repeat: repeat;
 }
 ```
 
@@ -865,6 +912,57 @@ div {
 }
 ```
 
+## Text Effects
+
+<code>
+text-overflow: clip|ellipsis|string|initial|inherit;
+</code>
+
+```css
+p {
+  text-overflow: clip;
+  text-overflow: ellipsis ellipsis;
+  text-overflow: ellipsis " [..]";
+}
+```
+
+<code>
+word-wrap: normal|break-word|initial|inherit;
+</code>
+
+```css
+p {
+  word-wrap: break-word;
+}
+```
+
+<code>
+word-break: normal|break-all|keep-all|break-word|initial|inherit;
+</code>
+
+```css
+p {
+  /* Keyword values */
+  word-break: normal;
+  word-break: break-all;
+  word-break: keep-all;
+  word-break: break-word; /* deprecated */
+}
+```
+
+<code>
+writing-mode: horizontal-tb|vertical-rl|vertical-lr;
+</code>
+
+```css
+p {
+  /* Keyword values */
+  writing-mode: horizontal-tb;
+  writing-mode: vertical-rl;
+  writing-mode: vertical-lr;
+}
+```
+
 # Fonts
 
 <code>
@@ -988,6 +1086,21 @@ font: font-style font-variant font-weight font-size/line-height font-family|capt
 ```css
 div {
   font: italic small-caps bold 12px/30px Georgia, serif;
+}
+```
+
+## Web Fonts
+
+    @font-face {
+       font-properties
+    }
+
+```css
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"), url("/fonts/OpenSans-Regular-webfont.woff")
+      format("woff");
+  font-weight: bold;
 }
 ```
 
@@ -1776,3 +1889,1021 @@ div {
   width: min(50%, 100px);
 }
 ```
+
+# Gradient
+
+<code>
+background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
+
+background-image: linear-gradient(angle, color-stop1, color-stop2);
+</code>
+
+```css
+#exm {
+  /* A gradient tilted 45 degrees,
+   starting blue and finishing red */
+  background-image: linear-gradient(45deg, blue, red);
+
+  /* A gradient going from the bottom right to the top left corner,
+   starting blue and finishing red */
+  background-image: linear-gradient(to left top, blue, red);
+
+  /* Color stop: A gradient going from the bottom to top,
+   starting blue, turning green at 40% of its length,
+   and finishing red */
+  background-image: linear-gradient(0deg, blue, green 40%, red);
+
+  /* Color hint: A gradient going from the left to right,
+   starting red, getting to the midpoint color
+   10% of the way across the length of the gradient,
+   taking the rest of the 90% of the length to change to blue */
+  background-image: linear-gradient(0.25turn, red, 10%, blue);
+
+  /* Multi-position color stop: A gradient tilted 45 degrees,
+   with a red bottom-left half and a blue top-right half,
+   with a hard line where the gradient changes from red to blue */
+  background-image: linear-gradient(45deg, red 0 50%, blue 50% 100%);
+
+  background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+}
+```
+
+<code>
+
+background-image: radial-gradient(shape size at position, start-color, ..., last-color);
+
+</code>
+
+```css
+#exm {
+  /* A gradient at the center of its container,
+   starting red, changing to blue, and finishing green */
+  background-image: radial-gradient(circle at center, red 0, blue, green 100%);
+
+  background-image: radial-gradient(red, yellow, green);
+  background-image: radial-gradient(red 5%, yellow 15%, green 60%);
+  background-image: radial-gradient(circle, red, yellow, green);
+  /* closest-side farthest-side closest-corner farthest-corner */
+  background-image: radial-gradient(
+    closest-side at 60% 55%,
+    red,
+    yellow,
+    black
+  );
+  background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
+}
+```
+
+<code>
+
+background-image: conic-gradient([from angle] [at position,] color [degree], color [degree], ...);
+</code>
+
+```css
+#exm {
+  /* A conic gradient rotated 45 degrees,
+   starting blue and finishing red */
+  background-image: conic-gradient(from 45deg, blue, red);
+
+  /* A bluish purple box: the gradient goes from blue to red,
+   but only the bottom right quadrant is visible, as the
+   center of the conic gradient is at the top left corner */
+  background-image: conic-gradient(from 90deg at 0 0, blue, red);
+
+  /* Color wheel */
+  background-image: conic-gradient(
+    hsl(360, 100%, 50%),
+    hsl(315, 100%, 50%),
+    hsl(270, 100%, 50%),
+    hsl(225, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(135, 100%, 50%),
+    hsl(90, 100%, 50%),
+    hsl(45, 100%, 50%),
+    hsl(0, 100%, 50%)
+  );
+
+  /* Conic Gradient */
+  background-image: conic-gradient(red, yellow, green);
+  background-image: conic-gradient(red 45deg, yellow 90deg, green 210deg);
+  background-image: conic-gradient(from 90deg, red, yellow, green);
+  background-image: conic-gradient(at 60% 45%, red, yellow, green);
+  background-image: repeating-conic-gradient(red 10%, yellow 20%);
+}
+```
+
+# Box Shadow
+
+<code>
+box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit;
+</code>
+
+```css
+#example1 {
+  /* Keyword values */
+  box-shadow: none;
+
+  /* offset-x | offset-y | color */
+  box-shadow: 60px -16px teal;
+
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 10px 5px 5px black;
+
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+  /* inset | offset-x | offset-y | color */
+  box-shadow: inset 5em 1em gold;
+
+  /* Any number of shadows, separated by commas */
+  box-shadow: 3px 3px red, -1em 0 0.4em olive;
+}
+```
+
+# Transforms
+
+<code>
+transform: none|transform-functions|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  transform: none;
+
+  /* Function values */
+  transform: matrix(1, 2, 3, 4, 5, 6);
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  transform: perspective(17px);
+  transform: rotate(0.5turn);
+  transform: rotate3d(1, 2, 3, 10deg);
+  transform: rotateX(10deg);
+  transform: rotateY(10deg);
+  transform: rotateZ(10deg);
+  transform: translate(12px, 50%);
+  transform: translate3d(12px, 50%, 3em);
+  transform: translateX(2em);
+  transform: translateY(3in);
+  transform: translateZ(2px);
+  transform: scale(2, 0.5);
+  transform: scale3d(2.5, 1.2, 0.3);
+  transform: scaleX(2);
+  transform: scaleY(0.5);
+  transform: scaleZ(0.3);
+  transform: skew(30deg, 20deg);
+  transform: skewX(30deg);
+  transform: skewY(1.07rad);
+
+  /* Multiple function values */
+  transform: translateX(10px) rotate(10deg) translateY(5px);
+  transform: perspective(500px) translate(10px, 0, 20px) rotateY(3deg);
+}
+```
+
+<code>
+transform-origin: x-axis y-axis z-axis|initial|inherit;
+</code>
+
+```css
+.box {
+  /* One-value syntax */
+  transform-origin: 2px;
+  transform-origin: bottom;
+
+  /* x-offset | y-offset */
+  transform-origin: 3cm 2px;
+
+  /* x-offset-keyword | y-offset */
+  transform-origin: left 2px;
+
+  /* x-offset-keyword | y-offset-keyword */
+  transform-origin: right top;
+
+  /* y-offset-keyword | x-offset-keyword */
+  transform-origin: top right;
+
+  /* x-offset | y-offset | z-offset */
+  transform-origin: 2px 30% 10px;
+
+  /* x-offset-keyword | y-offset | z-offset */
+  transform-origin: left 5px -3px;
+
+  /* x-offset-keyword | y-offset-keyword | z-offset */
+  transform-origin: right bottom 2cm;
+
+  /* y-offset-keyword | x-offset-keyword | z-offset */
+  transform-origin: bottom right 2cm;
+}
+```
+
+<code>
+transform-style: flat|preserve-3d|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  transform-style: flat;
+  transform-style: preserve-3d;
+}
+```
+
+<code>
+perspective: length|none;
+</code>
+
+```css
+.box {
+  /* Keyword value */
+  perspective: none;
+
+  /* <length> values */
+  perspective: 20px;
+  perspective: 3.5em;
+}
+```
+
+<code>
+perspective-origin: x-axis y-axis|initial|inherit;
+</code>
+
+```css
+.box {
+  /* One-value syntax */
+  perspective-origin: x-position;
+
+  /* Two-value syntax */
+  perspective-origin: x-position y-position;
+
+  /* When both x-position and y-position are keywords,
+   the following is also valid */
+  perspective-origin: y-position x-position;
+}
+```
+
+<code>
+backface-visibility: visible|hidden|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  backface-visibility: visible;
+  backface-visibility: hidden;
+}
+```
+
+# Transitions
+
+<code>
+transition: property duration timing-function delay|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Apply to 1 property */
+  /* property name | duration */
+  transition: margin-right 4s;
+
+  /* property name | duration | delay */
+  transition: margin-right 4s 1s;
+
+  /* property name | duration | easing function */
+  transition: margin-right 4s ease-in-out;
+
+  /* property name | duration | easing function | delay */
+  transition: margin-right 4s ease-in-out 1s;
+
+  /* Apply to 2 properties */
+  transition: margin-right 4s, color 1s;
+
+  /* Apply to all changed properties */
+  transition: all 0.5s ease-out;
+}
+```
+
+<code>
+transition-property: none|all|property|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  transition-property: none;
+  transition-property: all;
+
+  /* <custom-ident> values */
+  transition-property: test_05;
+  transition-property: -specific;
+  transition-property: sliding-vertically;
+
+  /* Multiple values */
+  transition-property: test1, animation4;
+  transition-property: all, height, color;
+  transition-property: all, -moz-specific, sliding;
+}
+```
+
+<code>
+transition-duration: time|initial|inherit;
+</code>
+
+```css
+.box {
+  /* <time> values */
+  transition-duration: 6s;
+  transition-duration: 120ms;
+  transition-duration: 1s, 15s;
+  transition-duration: 10s, 30s, 230ms;
+}
+```
+
+<code>
+transition-timing-function: linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps(int,start|end)|cubic-bezier(n,n,n,n)|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  transition-timing-function: ease;
+  transition-timing-function: ease-in;
+  transition-timing-function: ease-out;
+  transition-timing-function: ease-in-out;
+  transition-timing-function: linear;
+  transition-timing-function: step-start;
+  transition-timing-function: step-end;
+
+  /* Function values */
+  transition-timing-function: steps(4, jump-end);
+  transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+
+  /* Steps Function keywords */
+  transition-timing-function: steps(4, jump-start);
+  transition-timing-function: steps(10, jump-end);
+  transition-timing-function: steps(20, jump-none);
+  transition-timing-function: steps(5, jump-both);
+  transition-timing-function: steps(6, start);
+  transition-timing-function: steps(8, end);
+
+  /* Multiple timing functions */
+  transition-timing-function: ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+```
+
+<code>
+transition-delay: time|initial|inherit;
+</code>
+
+```css
+.box {
+  /* <time> values */
+  transition-delay: 3s;
+  transition-delay: 2s, 4ms;
+}
+```
+
+### Transition + Transformation
+
+```css
+.box {
+  transition: width 2s, height 2s, transform 2s;
+}
+
+.box:hover {
+  transform: rotate(180deg);
+}
+```
+
+# Animations
+
+<code>
+@keyframes animationname {keyframes-selector {css-styles;}}
+</code>
+
+```css
+@keyframes slidein {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+```
+
+<code>
+animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+</code>
+
+```css
+.box {
+  animation: mymove 5s infinite;
+
+  /* @keyframes duration | easing-function | delay |
+iteration-count | direction | fill-mode | play-state | name */
+  animation: 3s ease-in 1s 2 reverse both paused slidein;
+
+  /* @keyframes duration | easing-function | delay | name */
+  animation: 3s linear 1s slidein;
+
+  /* two animations */
+  animation: 3s linear slidein, 3s ease-out 5s slideout;
+}
+```
+
+<code>
+animation-duration: time|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Single animation */
+  animation-duration: 6s;
+  animation-duration: 120ms;
+
+  /* Multiple animations */
+  animation-duration: 1.64s, 15.22s;
+  animation-duration: 10s, 35s, 230ms;
+}
+```
+
+<code>
+animation-timing-function: linear|ease|ease-in|ease-out|ease-in-out|step-start|step-end|steps(int,start|end)|cubic-bezier(n,n,n,n)|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  animation-timing-function: ease;
+  animation-timing-function: ease-in;
+  animation-timing-function: ease-out;
+  animation-timing-function: ease-in-out;
+  animation-timing-function: linear;
+  animation-timing-function: step-start;
+  animation-timing-function: step-end;
+
+  /* Function values */
+  animation-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+  animation-timing-function: steps(4, end);
+
+  /* Steps Function keywords */
+  animation-timing-function: steps(4, jump-start);
+  animation-timing-function: steps(10, jump-end);
+  animation-timing-function: steps(20, jump-none);
+  animation-timing-function: steps(5, jump-both);
+  animation-timing-function: steps(6, start);
+  animation-timing-function: steps(8, end);
+
+  /* Multiple animations */
+  animation-timing-function: ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+}
+```
+
+<code>
+animation-delay: time|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Single animation */
+  animation-delay: 3s;
+  animation-delay: 0s;
+  animation-delay: -1500ms;
+
+  /* Multiple animations */
+  animation-delay: 2.1s, 480ms;
+}
+```
+
+<code>
+animation-iteration-count: number|infinite|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword value */
+  animation-iteration-count: infinite;
+
+  /* <number> values */
+  animation-iteration-count: 3;
+  animation-iteration-count: 2.4;
+
+  /* Multiple values */
+  animation-iteration-count: 2, 0, infinite;
+}
+```
+
+<code>
+animation-direction: normal|reverse|alternate|alternate-reverse|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Single animation */
+  animation-direction: normal;
+  animation-direction: reverse;
+  animation-direction: alternate;
+  animation-direction: alternate-reverse;
+
+  /* Multiple animations */
+  animation-direction: normal, reverse;
+  animation-direction: alternate, reverse, normal;
+}
+```
+
+<code>
+animation-fill-mode: none|forwards|backwards|both|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Single animation */
+  animation-fill-mode: none;
+  animation-fill-mode: forwards;
+  animation-fill-mode: backwards;
+  animation-fill-mode: both;
+
+  /* Multiple animations */
+  animation-fill-mode: none, backwards;
+  animation-fill-mode: both, forwards, none;
+}
+```
+
+<code>
+animation-play-state: paused|running|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Single animation */
+  animation-play-state: running;
+  animation-play-state: paused;
+
+  /* Multiple animations */
+  animation-play-state: paused, running, running;
+}
+```
+
+# Object Properties
+
+<code>
+object-fit: fill|contain|cover|scale-down|none|initial|inherit;
+</code>
+
+```css
+.box {
+  object-fit: contain;
+  object-fit: cover;
+  object-fit: fill;
+  object-fit: none;
+  object-fit: scale-down;
+}
+```
+
+<code>
+object-position: position|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  object-position: top;
+  object-position: bottom;
+  object-position: left;
+  object-position: right;
+  object-position: center;
+
+  /* <percentage> values */
+  object-position: 25% 75%;
+
+  /* <length> values */
+  object-position: 0 0;
+  object-position: 1cm 2cm;
+  object-position: 10ch 8em;
+
+  /* Edge offsets values */
+  object-position: bottom 10px right 20px;
+  object-position: right 3em bottom 10px;
+  object-position: top 0 right 10px;
+}
+```
+
+# Masking
+
+<code>
+mask-image: none|image|url|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword value */
+  mask-image: none;
+
+  /* <mask-source> value */
+  mask-image: url(masks.svg#mask1);
+
+  /* <image> values */
+  mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
+  mask-image: image(url(mask.png), skyblue);
+
+  /* Multiple values */
+  mask-image: image(url(mask.png), skyblue), linear-gradient(rgba(0, 0, 0, 1), transparent);
+}
+```
+
+<code>
+mask-repeat: repeat|repeat-x|repeat-y|space|round|no-repeat|initial|inherit;
+</code>
+
+```css
+.box {
+  /* One-value syntax */
+  mask-repeat: repeat-x;
+  mask-repeat: repeat-y;
+  mask-repeat: repeat;
+  mask-repeat: space;
+  mask-repeat: round;
+  mask-repeat: no-repeat;
+
+  /* Two-value syntax: horizontal | vertical */
+  mask-repeat: repeat space;
+  mask-repeat: repeat repeat;
+  mask-repeat: round space;
+  mask-repeat: no-repeat round;
+
+  /* Multiple values */
+  mask-repeat: space round, no-repeat;
+  mask-repeat: round repeat, space, repeat-x;
+}
+```
+
+<code>
+mask-mode: match-source|luminance|alpha|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  mask-mode: alpha;
+  mask-mode: luminance;
+  mask-mode: match-source;
+
+  /* Multiple values */
+  mask-mode: alpha, match-source;
+}
+```
+
+<code>
+mask-origin: border-box|content-box|padding-box|margin-box|fill-box|stroke-box|view-box|initial|inherit;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  mask-origin: content-box;
+  mask-origin: padding-box;
+  mask-origin: border-box;
+  mask-origin: margin-box;
+  mask-origin: fill-box;
+  mask-origin: stroke-box;
+  mask-origin: view-box;
+
+  /* Multiple values */
+  mask-origin: padding-box, content-box;
+  mask-origin: view-box, fill-box, border-box;
+
+  /* Non-standard keyword values */
+  -webkit-mask-origin: content;
+  -webkit-mask-origin: padding;
+  -webkit-mask-origin: border;
+}
+```
+
+<code>
+mask-position: value;
+</code>
+
+```css
+.box {
+  /* Keyword values */
+  mask-position: top;
+  mask-position: bottom;
+  mask-position: left;
+  mask-position: right;
+  mask-position: center;
+
+  /* <position> values */
+  mask-position: 25% 75%;
+  mask-position: 0px 0px;
+  mask-position: 10% 8em;
+
+  /* Multiple values */
+  mask-position: top right;
+  mask-position: 1rem 1rem, center;
+}
+```
+
+<code>
+mask-size: value;
+</code>
+
+```css
+.box {
+  /* Keywords syntax */
+  mask-size: cover;
+  mask-size: contain;
+
+  /* One-value syntax */
+  /* the width of the image (height set to 'auto') */
+  mask-size: 50%;
+  mask-size: 3em;
+  mask-size: 12px;
+  mask-size: auto;
+
+  /* Two-value syntax */
+  /* first value: width of the image, second value: height */
+  mask-size: 50% auto;
+  mask-size: 3em 25%;
+  mask-size: auto 6px;
+  mask-size: auto auto;
+
+  /* Multiple values */
+  /* Do not confuse this with mask-size: auto auto */
+  mask-size: auto, auto;
+  mask-size: 50%, 25%, 25%;
+  mask-size: 6px, auto, contain;
+}
+```
+
+# Multiple Columns
+
+<code>
+columns: auto|column-width column-count|initial|inherit;
+</code>
+
+```css
+div {
+  /* Column width */
+  columns: 18em;
+
+  /* Column count */
+  columns: auto;
+  columns: 2;
+
+  /* Both column width and count */
+  columns: 2 auto;
+  columns: auto 12em;
+  columns: auto auto;
+}
+```
+
+<code>
+column-count: number|auto|initial|inherit;
+</code>
+
+```css
+div {
+  /* Keyword value */
+  column-count: auto;
+
+  /* <integer> value */
+  column-count: 3;
+}
+```
+
+<code>
+column-fill: balance|auto|initial|inherit;
+</code>
+
+```css
+div {
+  /* Keyword values */
+  column-fill: auto;
+  column-fill: balance;
+  column-fill: balance-all;
+}
+```
+
+<code>
+column-gap: length|normal|initial|inherit;
+</code>
+
+```css
+div {
+  /* Keyword value */
+  column-gap: normal;
+
+  /* <length> values */
+  column-gap: 3px;
+  column-gap: 2.5em;
+
+  /* <percentage> value */
+  column-gap: 3%;
+}
+```
+
+<code>
+column-rule: column-rule-width column-rule-style column-rule-color|initial|inherit;
+</code>
+
+```css
+div {
+  column-rule: dotted;
+  column-rule: solid 8px;
+  column-rule: solid blue;
+  column-rule: thick inset blue;
+}
+```
+
+<code>
+column-rule-color: color|initial|inherit;
+</code>
+
+```css
+div {
+  /* <color> values */
+  column-rule-color: red;
+  column-rule-color: rgb(192, 56, 78);
+  column-rule-color: transparent;
+  column-rule-color: hsla(0, 100%, 50%, 0.6);
+}
+```
+
+<code>
+column-rule-style: none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit;
+</code>
+
+```css
+div {
+  /* <'border-style'> values */
+  column-rule-style: none;
+  column-rule-style: hidden;
+  column-rule-style: dotted;
+  column-rule-style: dashed;
+  column-rule-style: solid;
+  column-rule-style: double;
+  column-rule-style: groove;
+  column-rule-style: ridge;
+  column-rule-style: inset;
+  column-rule-style: outset;
+}
+```
+
+<code>
+column-rule-width: medium|thin|thick|length|initial|inherit;
+</code>
+
+```css
+div {
+  /* Keyword values */
+  column-rule-width: thin;
+  column-rule-width: medium;
+  column-rule-width: thick;
+
+  /* <length> values */
+  column-rule-width: 1px;
+  column-rule-width: 2.5em;
+}
+```
+
+<code>
+column-span: none|all|initial|inherit;
+</code>
+
+```css
+div {
+  /* Keyword values */
+  column-span: none;
+  column-span: all;
+}
+```
+
+<code>
+column-width: auto|length|initial|inherit;
+</code>
+
+```css
+div {
+  /* Keyword value */
+  column-width: auto;
+
+  /* <length> values */
+  column-width: 60px;
+  column-width: 15.5em;
+  column-width: 3.3vw;
+}
+```
+
+# User Interface
+
+<code>
+resize: none|both|horizontal|vertical|initial|inherit;
+</code>
+
+```css
+div {
+  /* Keyword values */
+  resize: none;
+  resize: both;
+  resize: horizontal;
+  resize: vertical;
+  resize: block;
+  resize: inline;
+}
+```
+
+# Variables
+
+<code>
+var(--name, value)
+</code>
+
+```css
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+
+body {
+  background-color: var(--blue);
+}
+```
+
+# Box Sizing
+
+<code>
+box-sizing: content-box|border-box|initial|inherit;
+</code>
+
+```css
+div {
+  box-sizing: border-box;
+  box-sizing: content-box;
+}
+* {
+  box-sizing: border-box;
+}
+```
+
+# Media Query
+
+    @media not|only mediatype and (expressions) {
+      CSS-Code;
+    }
+
+```html
+<head>
+  <link
+    rel="stylesheet"
+    media="screen and (min-width: 900px)"
+    href="widescreen.css"
+  />
+  <link
+    rel="stylesheet"
+    media="screen and (max-width: 600px)"
+    href="smallscreen.css"
+  />
+</head>
+```
+
+```css
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+@media screen {
+  body {
+    color: green;
+  }
+}
+
+@media print {
+  body {
+    color: black;
+  }
+}
+
+/* When the width is between 600px and 900px OR above 1100px - change the appearance of <div> */
+@media screen and (max-width: 900px) and (min-width: 600px),
+  (min-width: 1100px) {
+  div.example {
+    font-size: 50px;
+    padding: 50px;
+    border: 8px solid black;
+    background: yellow;
+  }
+}
+```
+
+# Flex Box
+
+v
