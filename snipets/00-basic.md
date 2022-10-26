@@ -398,13 +398,21 @@ border-image: source slice width outset repeat|initial|inherit;
 
 <code>
 border-image-source: none|image|initial|inherit;
+</code>
 
+<code>
 border-image-slice: number|%|fill|initial|inherit;
+</code>
 
+<code>
 border-image-width: number|%|auto|initial|inherit;
+</code>
 
+<code>
 border-image-outset: length|number|initial|inherit;
+</code>
 
+<code>
 border-image-repeat: stretch|repeat|round|space|initial|inherit;
 </code>
 
@@ -1399,7 +1407,9 @@ div {
 
 <code>
 overflow-x: visible|hidden|scroll|auto|initial|inherit;
+</code>
 
+<code>
 overflow-y: visible|hidden|scroll|auto|initial|inherit;
 </code>
 
@@ -1788,23 +1798,25 @@ counter-reset: none|name number|initial|inherit;
 </code>
 
 ```css
-/* Set "my-counter" to 0 */
-counter-reset: my-counter;
+#exam {
+  /* Set "my-counter" to 0 */
+  counter-reset: my-counter;
 
-/* Set "my-counter" to -3 */
-counter-reset: my-counter -3;
+  /* Set "my-counter" to -3 */
+  counter-reset: my-counter -3;
 
-/* Set reversed "my-counter" to "the number of peer elements" */
-counter-reset: reversed(my-counter);
+  /* Set reversed "my-counter" to "the number of peer elements" */
+  counter-reset: reversed(my-counter);
 
-/* Set reversed "my-counter" to -1 */
-counter-reset: reversed(my-counter) -1;
+  /* Set reversed "my-counter" to -1 */
+  counter-reset: reversed(my-counter) -1;
 
-/* Set counter2 to 9 and reversed "counter1" and "counter3" to 1 and 4, respectively*/
-counter-reset: reversed(counter1) 1 counter2 9 reversed(counter3) 4;
+  /* Set counter2 to 9 and reversed "counter1" and "counter3" to 1 and 4, respectively*/
+  counter-reset: reversed(counter1) 1 counter2 9 reversed(counter3) 4;
 
-/* Cancel any reset that could have been set in less specific rules */
-counter-reset: none;
+  /* Cancel any reset that could have been set in less specific rules */
+  counter-reset: none;
+}
 ```
 
 <code>
@@ -1812,17 +1824,19 @@ counter-increment: none|id|initial|inherit;
 </code>
 
 ```css
-/* Increment "my-counter" by 1 */
-counter-increment: my-counter;
+#exam {
+  /* Increment "my-counter" by 1 */
+  counter-increment: my-counter;
 
-/* Decrement "my-counter" by 1 */
-counter-increment: my-counter -1;
+  /* Decrement "my-counter" by 1 */
+  counter-increment: my-counter -1;
 
-/* Increment "counter1" by 1, and decrement "counter2" by 4 */
-counter-increment: counter1 counter2 -4;
+  /* Increment "counter1" by 1, and decrement "counter2" by 4 */
+  counter-increment: counter1 counter2 -4;
 
-/* Do not increment/decrement anything: used to override less specific rules */
-counter-increment: none;
+  /* Do not increment/decrement anything: used to override less specific rules */
+  counter-increment: none;
+}
 ```
 
 ```css
@@ -1895,7 +1909,9 @@ div {
 
 <code>
 background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
+</code>
 
+<code>
 background-image: linear-gradient(angle, color-stop1, color-stop2);
 </code>
 
@@ -1930,9 +1946,7 @@ background-image: linear-gradient(angle, color-stop1, color-stop2);
 ```
 
 <code>
-
 background-image: radial-gradient(shape size at position, start-color, ..., last-color);
-
 </code>
 
 ```css
@@ -1956,7 +1970,6 @@ background-image: radial-gradient(shape size at position, start-color, ..., last
 ```
 
 <code>
-
 background-image: conic-gradient([from angle] [at position,] color [degree], color [degree], ...);
 </code>
 
@@ -3186,7 +3199,9 @@ div {
 
 <code>
 row-gap: length|normal|initial|inherit;
+</code>
 
+<code>
 column-gap: length|normal|initial|inherit;
 </code>
 
@@ -3237,9 +3252,13 @@ div {
 
 <code>
 grid-column-gap: length;
+</code>
 
+<code>
 grid-row-gap: length;
+</code>
 
+<code>
 grid-gap: grid-row-gap grid-column-gap;
 </code>
 
