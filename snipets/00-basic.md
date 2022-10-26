@@ -399,19 +399,19 @@ border-image: source slice width outset repeat|initial|inherit;
 <code>
 border-image-source: none|image|initial|inherit;
 </code>
-
+<br>
 <code>
 border-image-slice: number|%|fill|initial|inherit;
 </code>
-
+<br>
 <code>
 border-image-width: number|%|auto|initial|inherit;
 </code>
-
+<br>
 <code>
 border-image-outset: length|number|initial|inherit;
 </code>
-
+<br>
 <code>
 border-image-repeat: stretch|repeat|round|space|initial|inherit;
 </code>
@@ -1408,7 +1408,7 @@ div {
 <code>
 overflow-x: visible|hidden|scroll|auto|initial|inherit;
 </code>
-
+<br>
 <code>
 overflow-y: visible|hidden|scroll|auto|initial|inherit;
 </code>
@@ -1910,7 +1910,7 @@ div {
 <code>
 background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
 </code>
-
+<br>
 <code>
 background-image: linear-gradient(angle, color-stop1, color-stop2);
 </code>
@@ -3200,7 +3200,7 @@ div {
 <code>
 row-gap: length|normal|initial|inherit;
 </code>
-
+<br>
 <code>
 column-gap: length|normal|initial|inherit;
 </code>
@@ -3253,11 +3253,11 @@ div {
 <code>
 grid-column-gap: length;
 </code>
-
+<br>
 <code>
 grid-row-gap: length;
 </code>
-
+<br>
 <code>
 grid-gap: grid-row-gap grid-column-gap;
 </code>
